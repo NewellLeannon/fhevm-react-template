@@ -12,7 +12,7 @@ This repository provides a framework-agnostic SDK that makes building confidenti
 
 **GitHub**: [https://github.com/NewellLeannon/fhevm-react-template](https://github.com/NewellLeannon/fhevm-react-template)
 
-**Demo Video**: See `demo.mp4` in the artist income example
+**Demo Video**: Download demo.mp4 to watch the demonstration. Direct video links are not accessible.
 
 ## Features
 
