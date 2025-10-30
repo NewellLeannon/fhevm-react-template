@@ -6,9 +6,18 @@ A universal FHEVM SDK and template collection for building confidential dApps wi
 
 This repository provides a framework-agnostic SDK that makes building confidential frontends simple, consistent, and developer-friendly. The SDK wraps all required FHE packages and provides a wagmi-like structure for web3 developers.
 
+**Key Highlights:**
+- Complete SDK with encryption, decryption, and contract interaction utilities
+- Framework adapters for React, Vue, and Node.js
+- Production-ready examples demonstrating real-world use cases
+- Comprehensive documentation and API reference
+- Less than 10 lines of code to get started
+
 ## Live Examples
 
-**Artist Income Analyzer**: [https://fhe-artist-income-analyzer.vercel.app/](https://fhe-artist-income-analyzer.vercel.app/)
+**Privacy Artist Income Analyzer (React + Vite)**: [https://private-artist-income-analyze.vercel.app/](https://private-artist-income-analyze.vercel.app/)
+
+**Artist Income Analyzer (Next.js)**: [https://fhe-artist-income-analyzer.vercel.app/](https://fhe-artist-income-analyzer.vercel.app/)
 
 **GitHub**: [https://github.com/NewellLeannon/fhevm-react-template](https://github.com/NewellLeannon/fhevm-react-template)
 
@@ -41,17 +50,38 @@ npm run dev
 ```
 fhevm-react-template/
 ├── packages/
-│   └── fhevm-sdk/              # Universal FHEVM SDK
+│   └── fhevm-sdk/                    # Universal FHEVM SDK
 │       ├── src/
-│       │   ├── core/           # Core functionality
-│       │   ├── react/          # React hooks
-│       │   └── vue/            # Vue composables
-│       └── package.json
+│       │   ├── core/                 # Core FHEVM client and factory
+│       │   ├── hooks/                # React hooks
+│       │   ├── react/                # React integration
+│       │   ├── vue/                  # Vue composables
+│       │   ├── adapters/             # Framework adapters
+│       │   ├── utils/                # Utilities (security, validation)
+│       │   ├── encryption.ts         # Encryption utilities
+│       │   ├── decryption.ts         # Decryption utilities
+│       │   ├── types.ts              # TypeScript types
+│       │   ├── constants.ts          # Network configs
+│       │   └── errors.ts             # Error classes
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── README.md
 ├── examples/
-│   ├── artist-income-nextjs/   # Next.js example
-│   └── nextjs-artist-income/   # Alternative Next.js implementation
-│   └── react-artist-income/    # React example
-└── package.json
+│   ├── nextjs-demo/                  # Complete Next.js 14 showcase with API routes
+│   ├── artist-income-nextjs/         # Privacy artist income analyzer (Next.js)
+│   ├── artist-income-react/          # Privacy artist income analyzer (React + Vite) ⭐ NEW
+│   ├── nextjs-artist-income/         # Alternative Next.js with Pages Router
+│   ├── react-artist-income/          # React variant with different patterns
+│   └── PrivateArtistIncomeAnalyzer/  # Original static HTML reference
+├── templates/
+│   └── nextjs/                       # Next.js starter template
+├── docs/
+│   ├── GETTING_STARTED.md            # Quick start guide
+│   ├── API.md                        # Complete API reference
+│   └── BEST_PRACTICES.md             # Best practices guide
+├── package.json                      # Monorepo configuration
+├── demo.mp4                          # Video demonstration
+└── README.md                         # This file
 ```
 
 ## SDK Usage
@@ -104,32 +134,107 @@ function MyComponent() {
 
 ## Examples
 
-### 1. Artist Income Analyzer (Next.js)
+### 1. Next.js Demo (Complete Showcase)
 
-Privacy-preserving artist income analysis platform.
+Comprehensive demonstration of all SDK features with complete Next.js 14 App Router structure.
 
 **Features**:
-- Anonymous artist registration
-- Encrypted income submission
-- Aggregate analytics
-- Privacy-protected reporting
+- Encryption demo with multiple data types (8/16/32/64-bit, bool, address)
+- Homomorphic computation operations (add, subtract, multiply, compare)
+- Banking example (encrypted balances and transactions)
+- Medical records example (HIPAA-compliant encrypted health data)
+- Full API routes for FHE operations
+- Custom hooks for encryption and computation
+- Type-safe utilities and validation
 
-**Tech Stack**:
-- Next.js 14
-- FHEVM SDK
-- TailwindCSS
-- Ethers.js
+**Location**: `examples/nextjs-demo/`
 
 **Run**:
 ```bash
-cd examples/artist-income-nextjs
+cd examples/nextjs-demo
 npm install
 npm run dev
 ```
 
-### 2. Privacy Reporting
+### 2. Artist Income Analyzer (Next.js)
 
-Additional example demonstrating SDK versatility.
+Privacy-preserving artist income analysis platform built with Next.js.
+
+**Features**:
+- Anonymous artist registration
+- Encrypted income submission
+- Aggregate analytics without exposing individual data
+- Privacy-protected reporting
+- Platform statistics tracking
+
+**Tech Stack**:
+- Next.js 14 with App Router
+- FHEVM SDK
+- TailwindCSS
+- Ethers.js
+
+**Location**: `examples/artist-income-nextjs/`
+
+**Live Demo**: [https://fhe-artist-income-analyzer.vercel.app/](https://fhe-artist-income-analyzer.vercel.app/)
+
+### 3. Privacy Artist Income Analyzer (React + Vite)
+
+A confidential creative economy insights platform powered by Zama's Fully Homomorphic Encryption (FHE) technology. React-based version using Vite for fast development and optimal performance.
+
+**Live Demo**: [https://private-artist-income-analyze.vercel.app/](https://private-artist-income-analyze.vercel.app/)
+
+**Contract Address**: `0xee7272C646331Db35A7217ed4c2a3aA8b17854aE` (Sepolia Testnet)
+
+**Core Features**:
+- **End-to-End Encryption**: All sensitive income data is encrypted on-chain
+- **Private Computation**: Analytics performed on encrypted data without revealing individual values
+- **Confidential Aggregation**: Market insights generated while preserving individual privacy
+- **Zero-Knowledge Analysis**: Platform operators cannot access individual artist income details
+
+**Functionality**:
+- Anonymous artist registration with privacy-preserving identifiers
+- Encrypted income data submission (total income, artworks sold, average pricing, royalties, commissions)
+- Multi-category analytics tracking (digital art, physical art, NFT sales, licensing, workshops, commissions)
+- Real-time platform statistics and aggregate market insights
+- Privacy-protected report generation
+
+**Technical Implementation**:
+- Fully componentized React architecture with TypeScript
+- Custom React components for each feature (ArtistRegistration, IncomeSubmission, CreativeAnalytics, PlatformStats, AnalysisControls, ProfileInfo)
+- Web3 wallet integration (MetaMask)
+- Client-side encryption with Zama fhEVM
+- Real-time blockchain interaction
+- Responsive modern UI with gradient styling
+
+**Tech Stack**:
+- React 18
+- Vite 5
+- TypeScript 5
+- FHEVM SDK
+- Ethers.js 5.7
+- fhevmjs 0.5
+
+**Location**: `examples/artist-income-react/`
+
+**Run**:
+```bash
+cd examples/artist-income-react
+npm install
+npm run dev
+```
+
+**Privacy Guarantee**: Your financial data is encrypted and never visible to other users or platform operators. All computations occur on encrypted data using Fully Homomorphic Encryption.
+
+### 4. Additional Examples
+
+- **nextjs-artist-income**: Alternative Next.js implementation with Pages Router
+- **react-artist-income**: Another React variant showcasing different patterns
+- **PrivateArtistIncomeAnalyzer**: Original static HTML version (reference implementation)
+
+### 5. Templates
+
+Ready-to-use templates in the `templates/` directory:
+- **Next.js Template**: Complete starter with all components, API routes, and SDK integration
 
 ## SDK API Reference
 
@@ -252,13 +357,38 @@ This SDK demonstrates:
 - **Documentation**: Clear examples and guides
 - **Creativity**: Multiple environment showcases
 
-## Deliverables
+## Deliverables Checklist
 
-- ✅ Universal FHEVM SDK package
-- ✅ Next.js example (Artist Income Analyzer)
-- ✅ Complete documentation
-- ✅ Video demonstration
-- ✅ Deployed examples
+Per the competition requirements:
+
+### Core SDK (`packages/fhevm-sdk/`)
+- ✅ Core initialization module (`src/core/client.ts`, `src/core/factory.ts`)
+- ✅ Encryption/decryption utilities (`src/encryption.ts`, `src/decryption.ts`)
+- ✅ Contract interaction module (integrated in client)
+- ✅ EIP-712 signature handling (in decryption utilities)
+- ✅ Complete TypeScript type definitions (`src/types.ts`)
+- ✅ Framework adapters (React: `src/react/`, Vue: `src/vue/`)
+- ✅ Utility functions (`src/utils/`)
+
+### Example Templates
+- ✅ Next.js showcase template (`examples/nextjs-demo/`)
+- ✅ Complete feature demonstration (encryption, computation, use cases)
+- ✅ Configuration files and deployment scripts
+- ✅ Templates directory (`templates/nextjs/`)
+
+### Documentation
+- ✅ Main README.md with installation and quick start
+- ✅ SDK package README (`packages/fhevm-sdk/README.md`)
+- ✅ Getting Started guide (`docs/GETTING_STARTED.md`)
+- ✅ Complete API reference (`docs/API.md`)
+- ✅ Best practices guide (`docs/BEST_PRACTICES.md`)
+- ✅ Code examples throughout
+
+### Deployment
+- ✅ Live demo (Artist Income Analyzer)
+- ✅ Demo video (demo.mp4)
+- ✅ GitHub repository
+- ✅ Production-ready configuration
 
 ## Contributing
 
