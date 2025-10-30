@@ -1,7 +1,12 @@
 export class FhevmError extends Error {
-  constructor(message: string) {
+  public readonly code?: string;
+  public readonly originalError?: unknown;
+
+  constructor(message: string, code?: string, originalError?: unknown) {
     super(message);
     this.name = 'FhevmError';
+    this.code = code;
+    this.originalError = originalError;
   }
 }
 
